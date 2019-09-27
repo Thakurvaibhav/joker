@@ -1,0 +1,13 @@
+version: '3'
+services:
+  
+  joker:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: joker:${TAG:-latest}
+    expose:
+      - 5000
+    ports:
+      - 5000:5000
+    command: python server.py
