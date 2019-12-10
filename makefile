@@ -10,10 +10,12 @@ build:
 clean:
 	$(info Make: Clean docker containers)
 	@TAG=${SHA} docker-compose down -v --remove-orphans
+	@TAG=${SHA} docker rmi -f joker:${SHA}
 
 .PHONY: run
 run:
 	$(info Make: Bring local docker cluster up)
+	make clean	
 	@TAG=${SHA} docker-compose -f docker-compose.yml up
 
 .PHONY: test
